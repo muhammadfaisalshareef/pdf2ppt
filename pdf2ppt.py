@@ -895,7 +895,8 @@ def convert_pdf_to_ppt(pdf_input_path, ppt_output_path, mineru_token,
                     tasks.append({
                         'type': 'api',
                         'page_num': page_num,
-                        'batch_id': batch_id
+                        'batch_id': batch_id,
+                        'page_path': page_path
                     })
                 except Exception as e:
                     logging.error(f"  [页 {page_num}] 上传失败: {e}")
@@ -931,13 +932,41 @@ def convert_pdf_to_ppt(pdf_input_path, ppt_output_path, mineru_token,
                 logging.info(f"[页 {page_num}] 使用缓存数据")
             else:
                 batch_id = task['batch_id']
-                logging.info(f"[页 {page_num}] 正在等待任务 {batch_id} ...")
-                try:
-                    zip_content = client.get_batch_result(batch_id)
-                    if use_cache:
-                        save_mineru_result_to_cache(page_num, zip_content, pdf_hash, cache_dir)
-                except Exception as e:
-                    logging.error(f"[页 {page_num}] 解析失败: {e}")
+                page_path = task.get('page_path')
+                zip_content = None
+                
+                # 重试循环：初始尝试 + 3次重试
+                max_retries = 3
+                for attempt in range(max_retries + 1):
+                    try:
+                        # 如果是重试，需要重新申请任务
+                        if attempt > 0:
+                            logging.info(f"[页 {page_num}] 第 {attempt} 次重试: 重新上传并解析...")
+                            if page_path and os.path.exists(page_path):
+                                batch_id = client.upload_and_extract(page_path)
+                            else:
+                                raise Exception("无法重试: 临时文件丢失")
+                        
+                        logging.info(f"[页 {page_num}] 正在等待任务 {batch_id} ...")
+                        zip_content = client.get_batch_result(batch_id)
+                        
+                        # 成功获取结果
+                        if use_cache:
+                            save_mineru_result_to_cache(page_num, zip_content, pdf_hash, cache_dir)
+                        
+                        # 成功则跳出重试循环
+                        break
+                        
+                    except Exception as e:
+                        if attempt < max_retries:
+                            logging.warning(f"[页 {page_num}] 解析失败: {e}。等待 5 秒后重试...")
+                            time.sleep(5)
+                        else:
+                            logging.error(f"[页 {page_num}] 重试 {max_retries} 次后最终失败: {e}")
+                            zip_content = None
+                
+                if zip_content is None:
+                    # 最终失败，跳过此页
                     all_pages_results.append(None)
                     continue
 
