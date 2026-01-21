@@ -96,12 +96,12 @@ graph TD
 | :-----------------------------: | :-----------------------------: |
 | ![转换前](screenshots/转换前.png) | ![转换后](screenshots/转换后.png) |
 
-**转换亮点**：
-✅ 标题字号自适应（Area-based 算法）
-✅ 图片精确定位 + Caption 识别
-✅ 列表项完整还原
-✅ LaTeX 符号自动转换（如 `+67.4%` 正确显示）
-✅ 水印自动过滤
+
+## 下载
+
+您可以直接下载打包好的可执行文件，无需安装Python环境：
+
+- **[PDF2PPT_Tool.exe (v0.3)](https://github.com/blacksamuraiiii/pdf2ppt/releases/download/v0.3/PDF2PPT_Tool.exe)**
 
 ## 快速开始
 
