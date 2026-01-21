@@ -64,9 +64,7 @@ class App(ctk.CTk):
         self.label_token.grid(row=0, column=0, padx=10, pady=10, sticky="w")
         self.entry_token = ctk.CTkEntry(self.input_frame, placeholder_text="请输入您的 MinerU Token")
         self.entry_token.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
-        # 默认尝试从 config 读取
-        if hasattr(pdf2ppt.config, 'MINERU_TOKEN') and pdf2ppt.config.MINERU_TOKEN:
-            self.entry_token.insert(0, pdf2ppt.config.MINERU_TOKEN)
+        # GUI 模式下默认为空，不从 config 读取（仅命令行模式使用 config.py）
 
         # 1.2 PDF 文件选择
         self.label_pdf = ctk.CTkLabel(self.input_frame, text="PDF 文件:", anchor="w")
@@ -84,16 +82,28 @@ class App(ctk.CTk):
         self.btn_ppt = ctk.CTkButton(self.input_frame, text="浏览...", width=80, command=self.browse_ppt_save)
         self.btn_ppt.grid(row=2, column=2, padx=10, pady=10)
 
-        # 1.4 PPT 比例
+        # 1.4 PPT 比例 和 去水印选项
         self.label_ratio = ctk.CTkLabel(self.input_frame, text="PPT 比例:", anchor="w")
         self.label_ratio.grid(row=3, column=0, padx=10, pady=10, sticky="w")
+        
+        # 比例选择器
         self.ratio_var = ctk.StringVar(value="16:9")
         self.ratio_combobox = ctk.CTkComboBox(
             self.input_frame, 
             values=["16:9", "4:3"],
-            variable=self.ratio_var
+            variable=self.ratio_var,
+            width=120
         )
         self.ratio_combobox.grid(row=3, column=1, padx=10, pady=10, sticky="w")
+        
+        # 去水印复选框（在同一行右侧）
+        self.remove_watermark_var = ctk.BooleanVar(value=True)
+        self.remove_watermark_checkbox = ctk.CTkCheckBox(
+            self.input_frame,
+            text="去水印",
+            variable=self.remove_watermark_var
+        )
+        self.remove_watermark_checkbox.grid(row=3, column=1, padx=(140, 10), pady=10, sticky="w")
 
         # ==================== 2. 中间按钮区 ====================
         self.btn_generate = ctk.CTkButton(
@@ -196,7 +206,8 @@ class App(ctk.CTk):
                     ppt_slide_width=w,
                     ppt_slide_height=h,
                     use_cache=False, 
-                    cache_dir="temp" # 仅用于调试
+                    cache_dir="temp", # 仅用于调试
+                    remove_watermark=self.remove_watermark_var.get()
                 )
                 messagebox.showinfo("成功", "PPT 转换完成！")
             except Exception as e:

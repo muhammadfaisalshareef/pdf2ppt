@@ -1,7 +1,7 @@
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(1, 0, 0, 0),
-    prodvers=(1, 0, 0, 0),
+    filevers=(0, 3, 0, 0),
+    prodvers=(0, 3, 0, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -17,12 +17,12 @@ VSVersionInfo(
           [
             StringStruct(u'CompanyName', u'Black Samurai Inc.'),
             StringStruct(u'FileDescription', u'PDF转PPT转换工具'),
-            StringStruct(u'FileVersion', u'1.0.0.0'),
+            StringStruct(u'FileVersion', u'0.3.0.0'),
             StringStruct(u'InternalName', u'PDF2PPT'),
             StringStruct(u'LegalCopyright', u'Copyright (C) 2026 Black Samurai'),
             StringStruct(u'OriginalFilename', u'PDF2PPT_Tool.exe'),
             StringStruct(u'ProductName', u'PDF2PPT Tool'),
-            StringStruct(u'ProductVersion', u'1.0.0.0'),
+            StringStruct(u'ProductVersion', u'0.3.0.0'),
           ]
         )
       ]

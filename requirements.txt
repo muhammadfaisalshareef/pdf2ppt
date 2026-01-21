@@ -1,5 +1,4 @@
-requests>=2.31.0
-PyMuPDF>=1.23.0
+customtkinter>=5.2.1
 python-pptx>=0.6.21
-customtkinter>=5.2.0
-tkcalendar>=1.6.1
+pymupdf>=1.23.8
+requests>=2.31.0
