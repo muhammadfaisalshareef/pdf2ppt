@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import webbrowser
 import customtkinter as ctk
 from tkinter import filedialog, messagebox
 import threading
@@ -45,7 +46,7 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("PDF 转 PPT 工具 (MinerU内核)")
+        self.title("PDF 转 PPT 工具 v0.3")
         self.geometry("700x650")
 
         # Configure grid layout
@@ -64,7 +65,8 @@ class App(ctk.CTk):
         self.label_token.grid(row=0, column=0, padx=10, pady=10, sticky="w")
         self.entry_token = ctk.CTkEntry(self.input_frame, placeholder_text="请输入您的 MinerU Token")
         self.entry_token.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
-        # GUI 模式下默认为空，不从 config 读取（仅命令行模式使用 config.py）
+        self.btn_token_url = ctk.CTkButton(self.input_frame, text="获取Token", width=80, command=self.open_token_url)
+        self.btn_token_url.grid(row=0, column=2, padx=10, pady=10)
 
         # 1.2 PDF 文件选择
         self.label_pdf = ctk.CTkLabel(self.input_frame, text="PDF 文件:", anchor="w")
@@ -126,6 +128,9 @@ class App(ctk.CTk):
 
         # 配置日志重定向
         self.setup_logging()
+
+    def open_token_url(self):
+        webbrowser.open("https://mineru.net/apiManage/token")
 
     def setup_logging(self):
         # 创建自定义 Handler
